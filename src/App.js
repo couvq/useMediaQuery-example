@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import { useMediaQuery } from './hooks/useMediaQuery';
+
+const renderDeviceSizeText = (isTabletOrSmaller, isPhoneScreen) => {
+  if(isTabletOrSmaller === false) {
+    return <h1>Desktop</h1>
+  } else if (isTabletOrSmaller === true && isPhoneScreen === false){
+    return <h1>Tablet</h1>
+  } else {
+    return <h1>Mobile</h1>
+  }
+}
 
 function App() {
+
+  const isTabletOrSmaller = useMediaQuery('(max-width: 768px');
+  const isPhoneScreen = useMediaQuery('(max-width: 480px)');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {
+        renderDeviceSizeText(isTabletOrSmaller, isPhoneScreen)
+      }
     </div>
   );
 }
