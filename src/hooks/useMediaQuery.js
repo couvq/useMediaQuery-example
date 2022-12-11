@@ -22,12 +22,11 @@ export const useMediaQuery = (query) => {
   }
 
   useEffect(() => {
-    const matchMedia = window.matchMedia(query);
-
     // Triggered at the first client-side load and if query changes
     handleChange();
 
     window.addEventListener('resize', handleChange);
+    // eslint-disable-next-line
   }, [query]);
 
   return matches;
