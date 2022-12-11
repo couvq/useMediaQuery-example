@@ -27,12 +27,7 @@ export const useMediaQuery = (query) => {
     // Triggered at the first client-side load and if query changes
     handleChange();
 
-    matchMedia.addEventListener("change", handleChange);
-
-    return () => {
-      matchMedia.removeEventListener("change", handleChange);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    window.addEventListener('resize', handleChange);
   }, [query]);
 
   return matches;
